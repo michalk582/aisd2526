@@ -51,14 +51,6 @@ void HEAP_SORT(vector<int>& A) {
 
 
 
-// HEAP_SORT z kopce ternarnym.
-// Dla każdego i zachodzi:
-// A[i] >= A[3*i + 1]
-// A[i] >= A[3*i + 2]
-// A[i] >= A[3*i + 3]
-// W zasadzie zmienia sie tylko algrotym HEAPIFY na HEAPIFY_MODIFIED
-
-
 int LEFT_MODIFIED(int i) {
     return 3 * i + 1;
 }
@@ -104,7 +96,7 @@ void HEAPIFY_MODIFIED(vector<int>& A, int heap_size, int i) {
 
 void BUILD_HEAP_MODIFIED(vector<int>& A) {
     int n = A.size();
-    for (int i = n / 2 - 1; i >= 0; i--) {
+    for (int i = n / 3 - 1; i >= 0; i--) {
         HEAPIFY_MODIFIED(A, n, i);
     }
 }
@@ -130,6 +122,8 @@ int main() {
     HEAP_SORT_MODIFIED(A);
     for (int x : A)
         cout << x << ' ';
+
+
 
     return 0;
 }
