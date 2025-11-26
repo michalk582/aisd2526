@@ -1,0 +1,1 @@
+CMakeLists.txt not found in /Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 2 Select CMakeLists.txt

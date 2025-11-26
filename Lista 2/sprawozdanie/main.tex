@@ -1,0 +1,305 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\title{Sprawozdanie AiSD Lista 2}
+\author{Michał Kasjaniuk, 287392}
+\date{November 2025}
+
+\begin{document}
+
+\maketitle
+\section{Wprowadzenie}
+Celem niniejszego sprawozdania jest implementacja, analiza oraz empiryczne porównanie wydajności trzech algorytmów sortowania: Quick Sort, Radix Sort oraz Bucket Sort.
+
+
+\section{Opis algorytmów}
+W tej sekcji zajmijmy się przedstawieniem algorytmów wraz z ich modyfikacjami.
+
+
+\subsection{Quick Sort}
+Quick Sort to jeden z najpopularniejszych i najefektywniejszych algorytmów sortowania ogólnego przeznaczenia. Opiera się na strategii "dziel i rządź".
+ W przeciętnym przypadku złożonośc obliczeniowa wynosi $O(N \log N)$. Natomiast w najgorszym przypadku osiąga $O(N^2)$.
+ 
+
+\begin{verbatim}
+int PARTITION(vector<int>& A, int poczatek, int koniec) {
+    int pivot = A[koniec];
+    int i = poczatek - 1;
+
+    for (int j = poczatek; j < koniec; j++) {
+        if (A[j] <= pivot) {
+            i++;
+            swap(A[i], A[j]);
+        }
+    }
+    swap(A[i + 1], A[koniec]);
+    return i + 1;
+}
+\end{verbatim}
+
+Niniejszy kod prezentuje implementację funkcji \textbf{PARTITION} (partycjonującej), która jest podstawą algorytmu QuickSort. Jej zadaniem jest podział fragmentu tablicy względem elementu osiowego (piwota) na dwie podtablice: elementów mniejszych lub równych oraz elementów większych. Funkcja ta zwraca indeks, pod którym piwot zostaje umieszczony na swojej ostatecznej pozycji, co stanowi punkt podziału dla kolejnych wywołań rekurencyjnych algorytmu QuickSort.
+
+
+Wychodząc poza klasyczny wariant algorytmu, zaimplementowano jego modyfikację Dual-Pivot Quick Sort. Głównym celem tego usprawnienia jest zwiększenie wydajności poprzez lepsze wykorzystanie pamięci podręcznej procesora oraz redukcję głębokości stosu rekursji. W przeciwieństwie do wersji standardowej, modyfikacja ta opiera się na jednoczesnym użyciu dwóch elementów osiowych, co pozwala na podzielenie tablicy na trzy, a nie na dwie podtablice w każdym kroku partycjonowania. 
+
+\begin{verbatim}
+void PARTITION_DUAL(vector<int>& A, int p, int k, int& lp, int& rp) {
+    if (A[p] > A[k]) {
+        swap(A[p], A[k]);
+    }
+
+    int pivot1 = A[p];
+    int pivot2 = A[k];
+
+    int i = p + 1;
+    int gt = k - 1;
+    int j = p + 1;
+
+    while (j <= gt) {
+        if (A[j] < pivot1) {
+            swap(A[j], A[i]);
+            i++;
+            j++;
+        }
+        else if (A[j] > pivot2) {
+            swap(A[j], A[gt]);
+            gt--;
+        }
+        else {
+            j++;
+        }
+    }
+
+    i--;
+    gt++;
+    swap(A[p], A[i]);
+    swap(A[k], A[gt]);
+
+    lp = i;
+    rp = gt;
+}
+\end{verbatim}
+
+
+\subsection{Radix Sort}
+Radix Sort to algorytm sortowania nieoparty na bezpośrednim porównywaniu elementów. Jego działanie polega na wielokrotnym sortowaniu elementów względem kolejnych pozycji (cyfr) w systemie o określonej podstawie $d$. Złożoność obliczeniowa to
+ $O(k \cdot (N + d))$, gdzie $N$ to liczba elementów, $d$ to podstawa systemu (np. 10), a $k$ to liczba cyfr w najdłuższej liczbie. W praktyce, przy optymalnym doborze podstawy $d$ (np. 256), algorytm działa w czasie liniowym $O(N)$.
+Algorytm sortuje liczby pozycja po pozycji (od cyfry najmniej znaczącej), używając stabilnego algorytmu sortującego (zazwyczaj Counting Sort).
+
+\begin{enumerate}
+    \item \textbf{Rozłożenie:} W każdej pętli elementy są rozrzucane do kubełków (zgodnie z aktualnie sortowaną cyfrą).
+    \item \textbf{Stabilność:} Kubełki są łączone, co musi odbyć się stabilnie, aby zachować porządek ustalony przez poprzednie, mniej znaczące cyfry.
+    \item \textbf{Iteracja:} Proces jest powtarzany dla każdej kolejnej pozycji (dziesiątek, setek, itd.).
+\end{enumerate}
+
+\begin{verbatim}
+void RADIX_SORT(vector<int>& A, int d, int k) {
+    long long exp = 1;
+    for (int i = 1; i <= k; i++) {
+        COUNTING_SORT(A, d, exp);
+        exp *= d;
+    }
+}
+\end{verbatim}
+
+
+Poniższy algorytm stanowi modyfikację klasycznego Radix Sort, która pozwala na poprawną obsługę liczb całkowitych, wliczając w to liczby ujemne.
+Różnica od wersji klasycznej polega na zastosowaniu Metody Przesunięcia: Algorytm najpierw znajduje najmniejszą wartość ujemną (minVal) w tablicy, a następnie dodaje jej wartość bezwzględną do wszystkich elementów. To przesuwa cały zakres liczb tak, że najmniejszy element staje się zerem, a wszystkie liczby są nieujemne. Na koniec, po posortowaniu przez standardowy Radix Sort, algorytm cofa przesunięcie, przywracając oryginalne wartości i ich prawidłową, rosnącą kolejność.
+
+\begin{verbatim}
+void RADIX_SORT_W_NEG(vector<int>& A, int d, int k) {
+    if (A.empty()) return;
+
+    int minVal = A[0];
+    for (int i = 1; i < A.size(); i++) {
+        if (A[i] < minVal) {
+            minVal = A[i];
+        }
+    }
+
+    for (int i = 0; i < A.size(); i++) {
+        A[i] = A[i] - minVal;
+    }
+
+
+    RADIX_SORT(A, d, k);
+
+
+    for (int i = 0; i < A.size(); i++) {
+        A[i] = A[i] + minVal;
+    }
+}
+\end{verbatim}
+
+\subsection{Bucket Sort}
+
+Bucket Sort to algorytm sortowania oparty na zasadzie dystrybucji elementów do mniejszych pojemników, których liczba wynosi $k$ (zwanych kubełkami). 
+\par Następnie algorytm przypisuje liczby z sortowanej tablicy do odpowiednich kubełków na podstawie ich wartości. Proces sortowania przebiega w trzech głównych etapach:
+\begin{enumerate}
+    \item Elementy są rozdzielane do $k$ kubełków.
+    \item Zawartość każdego kubełka jest sortowana niezależnie (np. przy użyciu algorytmu Bubble Sort).
+    \item Następnie zawartości kolejnych kubełków są przepisywane, tworząc posortowaną tablicę wynikową.
+\end{enumerate}
+
+W optymistycznych warunkach (równomierny rozkład danych) złożonośc obliczeniowa algorytmu osiąga złożoność liniową $\mathbf{\mathcal{O}(n)}$. W przypadku pesymistycznym, gdy wszystkie elementy trafią do jednego kubełka, złożoność tego algorytmu wynosi $\mathbf{\mathcal{O}(n^2)}$.
+
+\begin{verbatim}
+void BucketSort(vector<float>& A) {
+    int n = A.size();
+    vector<vector<float>> b(n); 
+
+    for (int i = 0; i < n; i++) {
+        int bi = n * A[i]; 
+
+        if (bi >= n) bi = n - 1; 
+
+        b[bi].push_back(A[i]); 
+    }
+
+    for (int i = 0; i < n; i++) {
+        INSERTION_SORT(b[i]); 
+    }
+
+    int index = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < b[i].size(); j++) {
+            A[index++] = b[i][j]; 
+        }
+    }
+}
+\end{verbatim}
+
+
+
+
+
+Poniższy algorytm stanowi uniwersalną modyfikację Bucket Sorta, mającą na celu usunięcie ograniczenia, które narzuca konieczność pracy w zakresie $[0, 1)$. Działanie opiera się na procesie \textbf{normalizacji i skalowania} danych:
+\begin{enumerate}
+    \item Analiza zakresu: Najpierw oblicza się minimalną  i maksymalną wartość w tablicy wejściowej.
+    \item Skalowanie do indeksu: Następnie każda liczba jest mapowana na indeks kubełka za pomocą wzoru:
+    $$ \text{index} = \left\lfloor \frac{A[i] - \text{min}}{\text{max} - \text{min}} \cdot N \right\rfloor $$
+\end{enumerate}
+Modyfikacja ta pozwala na poprawne sortowanie dowolnych liczb rzeczywistych (ujemnych, dużych), zachowując przy tym oczekiwaną średnią złożoność liniową $\mathbf{\mathcal{O}(n)}$, kosztem minimalnego narzutu obliczeniowego na wstępne znalezienie granic zakresu.
+
+\begin{verbatim}
+void BucketSort_Modfied(vector<float>& A) {
+    int n = A.size();
+    if (n <= 1) return;
+
+    float minVal = A[0];
+    float maxVal = A[0];
+    for (float x : A) {
+        if (x < minVal) minVal = x;
+        if (x > maxVal) maxVal = x;
+    }
+    float range = maxVal - minVal;
+    if (range == 0) return;
+    vector<vector<float>> B(n);
+
+
+    for (int i = 0; i < n; i++) {
+        int index = (int)((A[i] - minVal) / range * n);
+
+        if (index >= n) {
+            index = n - 1;
+        }
+
+        B[index].push_back(A[i]);
+    }
+
+    for (int j = 0; j < n; j++) {
+
+        if (!B[j].empty()) {
+            INSERTION_SORT(B[j]);
+        }
+    }
+
+    int k = 0;
+    for (int j = 0; j < n; j++) {
+        for (float val : B[j]) {
+            A[k++] = val;
+        }
+    }
+}
+\end{verbatim}
+
+\newpage
+
+\section{Porównanie algorytmów}
+
+\subsection{Porównanie działania Radix Sort dla róznych podstaw d.}
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Podstawa} ($\mathbf{d}$) & \textbf{Liczba Przebiegów} ($\mathbf{k}$) & \textbf{Czas [ms]} \\ \hline
+2 & 29 & 426 \\ \hline
+10 & 10 & 148 \\ \hline
+100 & 6 & 89 \\ \hline
+256 & 5 & 76 \\ \hline
+1024 & 4 & 59 \\ \hline
+\end{tabular}
+\caption{Porównanie wydajności Radix Sort dla różnych podstaw systemu liczbowego ($d$). Testy dla $n=1\,000\,000$ losowych liczb.}
+\label{tab:radix_bases_results}
+\end{table}
+
+\textbf{Wnioski z testów Radix Sort}
+\label{sub:radix-wnioski}
+
+Analiza wydajności Radix Sort dla różnych podstaw $d$ wyraźnie potwierdza, że czas wykonania algorytmu zależy głównie od liczby wymaganych przebiegów pętli ($k$).
+
+\begin{itemize}
+    \item \textbf{Kluczowa rola $k$:} Najważniejszym czynnikiem wpływającym na czas wykonania jest liczba przebiegów pętli ($\mathbf{k}$). Wzrost podstawy $d$ powoduje logarytmiczny spadek $k$, co jest głównym źródłem zysku czasowego.
+    
+    \item \textbf{Ekstremalny koszt ($d=2$):} Sortowanie binarne ($d=2$) było najwolniejsze (\textbf{426 ms}) z powodu konieczności wykonania aż $\mathbf{29}$ pełnych cykli sortowania (tyle, ile bitów potrzeba na zapisanie zakresu liczb). Jest to bezpośredni koszt wielokrotnego przepisywania tablicy.
+    
+    \item \textbf{Optimum Wydajności ($d \ge 256$):} Najlepsze czasy uzyskano dla dużych podstaw: ($\mathbf{d=1024}$ - 59 ms oraz $\mathbf{d=256}$ - 76 ms). Osiągnięto w ten sposób najlepszy kompromis: minimalizację $k$ do 4-5 przebiegów przy akceptowalnym koszcie pamięci dla tablicy liczników.
+
+    \item \textbf{Wniosek ogólny:} Dla maksymalizacji wydajności należy zawsze dążyć do minimalizacji liczby przejść $k$ poprzez wybór największej możliwej podstawy $d$.
+\end{itemize}
+
+\subsection{Porównanie algorytmu Quick Sort i Bucket Sort.}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Algorytm} & \textbf{Czas wykonania [ms]} \\ \hline
+\textbf{Quick Sort}  & 139.678 \\ \hline
+\textbf{Quick Sort Modfieid} (Dual-Pivot) & 126.557 \\ \hline
+\textbf{Bucket Sort} (Standard) & 180.994 \\ \hline
+\textbf{Bucket Sort Modified} (Uniwersalny / Mod.) & 184.849 \\ \hline
+\end{tabular}
+\caption{Porównanie wydajności sortowania dla $N = 1\,000\,000$.}
+\label{tab:final_comparison_1m}
+\end{table}
+
+\begin{figure}[H] % [H] wymusza umieszczenie wykresu w tym miejscu
+    \centering % Wyśrodkowanie wykresu
+    \includegraphics[width=0.95\textwidth]{porownanie_algorytmow_asymptotyka.png}
+    
+    \label{fig:performance_chart_asymptotics}
+\end{figure}
+
+
+\textbf{Wnioski końcowe (Porównanie Quick Sort i Bucket Sort)}
+\label{sub:final-comparison}
+
+Analiza wyników dla $n = 10\,000\,000$ elementów dostarcza następujących kluczowych konkluzji:
+
+\begin{enumerate}
+    \item Anomalia implementacyjna: Algorytm Bucket Sort, mimo teoretycznej złożoności liniowej ($\mathbf{\mathcal{O}(N)}$), okazał się w teście znacznie wolniejszy od Quick Sorta ($\mathbf{\mathcal{O}(N \log N)}$).
+    
+    \item Wariant \textbf{Quick Sort Dual-Pivot} był konsekwentnie najszybszy w całym zestawieniu. Jest to dowód na to, że techniki optymalizacji  w algorytmach operujących \textit{in-place} dają lepszy rezultat końcowy niż algorytmy o niższej złożoności, ale wysokim koszcie zarządzania pamięcią dynamiczną.
+\end{enumerate}
+
+
+\end{document}
