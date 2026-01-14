@@ -28,7 +28,6 @@ void QUICK_SORT(vector<int>& A, int p, int k) {
 
 
 
-
 void PARTITION_DUAL(vector<int>& A, int p, int k, int& lp, int& rp) {
     if (A[p] > A[k]) {
         swap(A[p], A[k]);

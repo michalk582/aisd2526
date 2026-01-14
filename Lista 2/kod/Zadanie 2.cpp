@@ -10,21 +10,22 @@ void COUNTING_SORT(vector<int>& A, int d, long long exp) {
     vector<int> C(d, 0);
 
     vector<int> B(n);
-
+    //zliczanie po szczgolnych wartosci
     for (int i = 0; i < n; i++) {
         int key = (A[i] / exp) % d;
         C[key] = C[key] + 1;
     }
-
+    // zmiana znaczenia C (z ile sztuk) na ktorym indeksie konczy sie ta grupa tej cyfry
+    // czyli jeslii np C[2] = 5 to znaczy ze liczby z cyfra 2 maja ladowac na miejsach do indeksu 4 włacznie
     for (int j = 1; j < d; j++) {
+        // suma prefiksowa
         C[j] = C[j - 1] + C[j];
     }
 
+    //WAKLADANIE DO TALBICY
     for (int i = n - 1; i >= 0; i--) {
         int key = (A[i] / exp) % d;
-
         B[C[key] - 1] = A[i];
-
         C[key] = C[key] - 1;
     }
 

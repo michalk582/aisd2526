@@ -4,5 +4,6 @@
 /Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 2/kod/cmake-build-debug/CMakeFiles/Zadanie4.dir
 /Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 2/kod/cmake-build-debug/CMakeFiles/Zadanie5.dir
 /Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 2/kod/cmake-build-debug/CMakeFiles/Zadanie6.dir
+/Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 2/kod/cmake-build-debug/CMakeFiles/test7.dir
 /Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 2/kod/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 2/kod/cmake-build-debug/CMakeFiles/rebuild_cache.dir
