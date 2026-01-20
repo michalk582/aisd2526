@@ -1180,6 +1180,30 @@
 			],
 			"type" : "STATIC",
 			"value" : "/Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 3"
+		},
+		{
+			"name" : "Python3_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "/Users/michalkasjaniuk/.virtualenvs/.venv/bin/python"
+		},
+		{
+			"name" : "Python_EXECUTABLE",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : "/Users/michalkasjaniuk/.virtualenvs/.venv/bin/python"
 		}
 	],
 	"kind" : "cache",

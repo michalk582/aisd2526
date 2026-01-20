@@ -15,7 +15,9 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -30,7 +32,9 @@
 					"name" : "Lista_3",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1,
+						2
 					]
 				}
 			],
@@ -39,8 +43,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Lista_3::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Lista_3-Debug-b288c1ef767d2f11493a.json",
+					"jsonFile" : "target-Lista_3-Debug-8ea31ed59fc8b073ee11.json",
 					"name" : "Lista_3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Testy_Zadanie2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Testy_Zadanie2-Debug-78101cfad8be524f753c.json",
+					"name" : "Testy_Zadanie2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "Testy_Zadanie6::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Testy_Zadanie6-Debug-a1bbcb134dc314813962.json",
+					"name" : "Testy_Zadanie6",
 					"projectIndex" : 0
 				}
 			]

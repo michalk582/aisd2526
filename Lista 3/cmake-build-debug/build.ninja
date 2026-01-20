@@ -49,23 +49,23 @@ cmake_ninja_workdir = /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_st
 
 build cmake_object_order_depends_target_Lista_3: phony || .
 
-build CMakeFiles/Lista_3.dir/kod/Zadanie_1.cpp.o: CXX_COMPILER__Lista_3_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie$ 1.cpp || cmake_object_order_depends_target_Lista_3
+build CMakeFiles/Lista_3.dir/kod/Zadanie_7.cpp.o: CXX_COMPILER__Lista_3_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie$ 7.cpp || cmake_object_order_depends_target_Lista_3
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/Lista_3.dir/kod/Zadanie_1.cpp.o.d
+  DEP_FILE = CMakeFiles/Lista_3.dir/kod/Zadanie_7.cpp.o.d
   FLAGS = -g -arch arm64 -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/Lista_3.dir
   OBJECT_FILE_DIR = CMakeFiles/Lista_3.dir/kod
 
-build CMakeFiles/Lista_3.dir/kod/fun.cpp.o: CXX_COMPILER__Lista_3_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/fun.cpp || cmake_object_order_depends_target_Lista_3
+build CMakeFiles/Lista_3.dir/kod/Zadanie_3_i_4.cpp.o: CXX_COMPILER__Lista_3_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie$ 3$ i$ 4.cpp || cmake_object_order_depends_target_Lista_3
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/Lista_3.dir/kod/fun.cpp.o.d
+  DEP_FILE = CMakeFiles/Lista_3.dir/kod/Zadanie_3_i_4.cpp.o.d
   FLAGS = -g -arch arm64 -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/Lista_3.dir
   OBJECT_FILE_DIR = CMakeFiles/Lista_3.dir/kod
 
-build CMakeFiles/Lista_3.dir/kod/Zadanie_2.cpp.o: CXX_COMPILER__Lista_3_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie$ 2.cpp || cmake_object_order_depends_target_Lista_3
+build CMakeFiles/Lista_3.dir/kod/Zadanie_1_i_2.cpp.o: CXX_COMPILER__Lista_3_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie$ 1$ i$ 2.cpp || cmake_object_order_depends_target_Lista_3
   CONFIG = Debug
-  DEP_FILE = CMakeFiles/Lista_3.dir/kod/Zadanie_2.cpp.o.d
+  DEP_FILE = CMakeFiles/Lista_3.dir/kod/Zadanie_1_i_2.cpp.o.d
   FLAGS = -g -arch arm64 -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/Lista_3.dir
   OBJECT_FILE_DIR = CMakeFiles/Lista_3.dir/kod
@@ -78,7 +78,7 @@ build CMakeFiles/Lista_3.dir/kod/Zadanie_2.cpp.o: CXX_COMPILER__Lista_3_unscanne
 #############################################
 # Link the executable Lista_3
 
-build Lista_3: CXX_EXECUTABLE_LINKER__Lista_3_Debug CMakeFiles/Lista_3.dir/kod/Zadanie_1.cpp.o CMakeFiles/Lista_3.dir/kod/fun.cpp.o CMakeFiles/Lista_3.dir/kod/Zadanie_2.cpp.o
+build Lista_3: CXX_EXECUTABLE_LINKER__Lista_3_Debug CMakeFiles/Lista_3.dir/kod/Zadanie_7.cpp.o CMakeFiles/Lista_3.dir/kod/Zadanie_3_i_4.cpp.o CMakeFiles/Lista_3.dir/kod/Zadanie_1_i_2.cpp.o
   CONFIG = Debug
   FLAGS = -g -arch arm64
   OBJECT_DIR = CMakeFiles/Lista_3.dir
@@ -86,6 +86,79 @@ build Lista_3: CXX_EXECUTABLE_LINKER__Lista_3_Debug CMakeFiles/Lista_3.dir/kod/Z
   PRE_LINK = :
   TARGET_FILE = Lista_3
   TARGET_PDB = Lista_3.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target Testy_Zadanie2
+
+
+#############################################
+# Order-only phony target for Testy_Zadanie2
+
+build cmake_object_order_depends_target_Testy_Zadanie2: phony || .
+
+build CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_2.cpp.o: CXX_COMPILER__Testy_Zadanie2_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie_2.cpp || cmake_object_order_depends_target_Testy_Zadanie2
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_2.cpp.o.d
+  FLAGS = -g -arch arm64 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Testy_Zadanie2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Testy_Zadanie2.dir/kod
+
+build CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_1.cpp.o: CXX_COMPILER__Testy_Zadanie2_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie$ 1.cpp || cmake_object_order_depends_target_Testy_Zadanie2
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_1.cpp.o.d
+  FLAGS = -g -arch arm64 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Testy_Zadanie2.dir
+  OBJECT_FILE_DIR = CMakeFiles/Testy_Zadanie2.dir/kod
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Testy_Zadanie2
+
+
+#############################################
+# Link the executable Testy_Zadanie2
+
+build Testy_Zadanie2: CXX_EXECUTABLE_LINKER__Testy_Zadanie2_Debug CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_2.cpp.o CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_1.cpp.o
+  CONFIG = Debug
+  FLAGS = -g -arch arm64
+  OBJECT_DIR = CMakeFiles/Testy_Zadanie2.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Testy_Zadanie2
+  TARGET_PDB = Testy_Zadanie2.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target Testy_Zadanie6
+
+
+#############################################
+# Order-only phony target for Testy_Zadanie6
+
+build cmake_object_order_depends_target_Testy_Zadanie6: phony || .
+
+build CMakeFiles/Testy_Zadanie6.dir/kod/Zadanie_5_i_6.cpp.o: CXX_COMPILER__Testy_Zadanie6_unscanned_Debug /Users/michalkasjaniuk/Desktop/Semestr$ III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista$ 3/kod/Zadanie$ 5$ i$ 6.cpp || cmake_object_order_depends_target_Testy_Zadanie6
+  CONFIG = Debug
+  DEP_FILE = CMakeFiles/Testy_Zadanie6.dir/kod/Zadanie_5_i_6.cpp.o.d
+  FLAGS = -g -arch arm64 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/Testy_Zadanie6.dir
+  OBJECT_FILE_DIR = CMakeFiles/Testy_Zadanie6.dir/kod
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target Testy_Zadanie6
+
+
+#############################################
+# Link the executable Testy_Zadanie6
+
+build Testy_Zadanie6: CXX_EXECUTABLE_LINKER__Testy_Zadanie6_Debug CMakeFiles/Testy_Zadanie6.dir/kod/Zadanie_5_i_6.cpp.o
+  CONFIG = Debug
+  FLAGS = -g -arch arm64
+  OBJECT_DIR = CMakeFiles/Testy_Zadanie6.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Testy_Zadanie6
+  TARGET_PDB = Testy_Zadanie6.dbg
 
 
 #############################################
@@ -128,7 +201,7 @@ build codegen: phony
 #############################################
 # Folder: /Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 3/cmake-build-debug
 
-build all: phony Lista_3
+build all: phony Lista_3 Testy_Zadanie2 Testy_Zadanie6
 
 # =============================================================================
 # Built-in targets

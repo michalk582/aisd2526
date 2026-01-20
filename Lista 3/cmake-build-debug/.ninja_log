@@ -1,3 +1,12 @@
 # ninja log v6
-2	234	1768422953945958980	CMakeFiles/Lista_3.dir/kod/Zadanie_1.cpp.o	5bef84dfde4d7830
+527	635	1768854726981372266	Testy_Zadanie4	bb889d2351f8757e
+2	77	1768920874827959045	build.ninja	c516ad5364e4739f
+2	77	1768920874826592127	/Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 3/cmake-build-debug/cmake_install.cmake	c516ad5364e4739f
+3	326	1768918499099108021	CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_1.cpp.o	c51b7f21df1d003
+4	303	1768918520607637283	CMakeFiles/Testy_Zadanie2.dir/kod/Zadanie_2.cpp.o	c26ff9261f11b525
+1	375	1768853922014549753	CMakeFiles/Testy_Zadanie4.dir/kod/Zadanie_4.cpp.o	473cb15cacdbfd3b
+303	339	1768918520906298852	Testy_Zadanie2	c92f2243f4cb3e9d
 235	272	1768422954178853655	Lista_3	ca48fa52939d6393
+428	533	1768857783915048612	Testy_Zadanie6	370e43a947d9c9c4
+4	526	1768854726458945099	CMakeFiles/Testy_Zadanie4.dir/kod/Zadanie_3.cpp.o	feb3fefa27401a80
+9	427	1768857783496157461	CMakeFiles/Testy_Zadanie6.dir/kod/Zadanie_5_i_6.cpp.o	6a22c8c7c93dbe87

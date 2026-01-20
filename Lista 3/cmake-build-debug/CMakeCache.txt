@@ -225,6 +225,12 @@ Lista_3_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Lista_3_SOURCE_DIR:STATIC=/Users/michalkasjaniuk/Desktop/Semestr III/Algorytmy_i_struktury_danych/Laby_AiSD/aisd2526/Lista 3
 
+//No help, variable specified on the command line.
+Python3_EXECUTABLE:UNINITIALIZED=/Users/michalkasjaniuk/.virtualenvs/.venv/bin/python
+
+//No help, variable specified on the command line.
+Python_EXECUTABLE:UNINITIALIZED=/Users/michalkasjaniuk/.virtualenvs/.venv/bin/python
+
 
 ########################
 # INTERNAL cache entries
