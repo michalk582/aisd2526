@@ -75,5 +75,5 @@ plt.ylabel('Czas (s)')
 plt.legend()
 plt.grid(True, which="both", ls="-", alpha=0.4)
 
-print("Wyświetlam wykres...")
+print("Wyświetl")
 plt.show()
